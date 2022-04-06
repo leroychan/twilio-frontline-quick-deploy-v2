@@ -59,6 +59,7 @@ AIRTABLE_API_KEY= # Your Airtable API key
 AIRTABLE_BASE_ID= # Your Airtable Base ID
 
 SENDGRID_API_KEY= # Your Sendgrid API key
+SENDGRID_EMAIL_FROM= # Email address that Sendgrid uses to send out email. Please ensure that the email has been verified within Sendgrid
 
 SEGMENT_WRITE_KEY= # Your Segment Write key
 ```

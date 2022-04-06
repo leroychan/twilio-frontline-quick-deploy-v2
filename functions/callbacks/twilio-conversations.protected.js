@@ -2,6 +2,7 @@ const path = Runtime.getAssets()["/providers/customers.js"].path;
 const { getCustomerByNumber, updateConsentByCustomerId } = require(path);
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const sendgridEmailFrom = process.env.SENDGRID_EMAIL_FROM;
 
 exports.handler = async function (context, event, callback) {
   console.log("Conversations Callback");
@@ -115,7 +116,7 @@ exports.handler = async function (context, event, callback) {
         if (event.Body.toLowerCase().indexOf("backline") > -1) {
           const emailBody = {
             to: "lechan+frontlinedemo@twilio.com",
-            from: "twilio@leroychan.com",
+            from: sendgridEmailFrom,
             subject: "[Frontline Demo] Non-Compliant Word(s) Alert",
             text: `The following worker (${event.Author}) has tried to send a non-compliant word ("backline") to ${customer.display_name}.`,
           };
