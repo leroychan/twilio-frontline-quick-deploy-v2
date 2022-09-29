@@ -113,7 +113,7 @@ exports.handler = async function (context, event, callback) {
           callback(null, overrideMessage);
         }
         // Check Filtered - Backline
-        if (event.Body.toLowerCase().indexOf("backline") > -1) {
+        if (event.Body && event.Body.toLowerCase().indexOf("backline") > -1) {
           const emailBody = {
             to: "lechan+frontlinedemo@twilio.com",
             from: sendgridEmailFrom,
@@ -136,7 +136,7 @@ exports.handler = async function (context, event, callback) {
          * Workflow for Customer
          *
          **/
-        if (event.Body.toLowerCase().indexOf("yes") > -1) {
+        if (event.Body && event.Body.toLowerCase().indexOf("yes") > -1) {
           if (!customerConsentStatus) {
             await updateConsentByCustomerId(
               context,
